@@ -1,0 +1,657 @@
+* { 
+    box-sizing: border-box; 
+} 
+
+html { 
+    scroll-behavior: smooth; 
+} 
+
+body { 
+    font-family: Arial, sans-serif; 
+    background-color: #131323; 
+    color: #f0f0f0; 
+    line-height: 1.6; 
+    margin: 0; 
+    padding: 20px;
+    background-image: url('imagens/gt500-fundo.jpg'); 
+    background-attachment: fixed; 
+    background-size: cover; 
+    background-position: center; 
+} 
+
+h1, h2, h3 { 
+    font-family: 'Bebas Neue', sans-serif; 
+    color: #4da6ff; 
+    text-align: center; 
+} 
+
+header { 
+    position: fixed; 
+    overflow: hidden; 
+    height: 80px; 
+    background-color: rgba(19, 19, 35, 0.8); 
+    backdrop-filter: blur(10px); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+    padding: 10px 20px; 
+    display: flex; 
+    flex-direction: row; 
+    justify-content: space-between; 
+    align-items: center; 
+    width: 100%; 
+    top: 0; 
+    left: 0; 
+    z-index: 5; 
+    transition: all 0.5s ease; 
+} 
+
+header p.typed-text-container { 
+    display: none; 
+} 
+
+header h1 { 
+    font-size: 1.8em; 
+    margin: 0; 
+    text-align: left; 
+} 
+
+header nav { 
+    margin-top: 0; 
+} 
+
+header nav a { 
+    color: white; 
+    text-decoration: none; 
+    font-weight: bold; 
+    margin: 0 15px; 
+    transition: color 0.3s ease, border-bottom 0.3s ease, padding-bottom 0.3s ease; 
+} 
+
+header nav a:hover { 
+    color: #4da6ff; 
+} 
+
+header nav a.active { 
+    color: #4da6ff; 
+    border-bottom: 2px solid #4da6ff; 
+    padding-bottom: 5px; 
+} 
+
+main { 
+    margin-top: 80px; 
+    position: relative; 
+    z-index: 3; 
+    background-color: rgba(19, 19, 35, 0.9); 
+    padding: 20px; 
+} 
+
+#galeria h2 { 
+    margin-top: 30px; 
+    margin-bottom: 20px; 
+} 
+
+.card-container { 
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    gap: 30px; 
+    padding-bottom: 40px; 
+} 
+
+.card { 
+    background-color: #1a1a2e; 
+    color: white; 
+    width: 300px; 
+    border-radius: 8px; 
+    overflow: hidden; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    transition: transform 0.3s ease, background-color 0.5s ease; 
+    cursor: pointer; 
+} 
+
+.card:hover { 
+    transform: translateY(-10px); 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); 
+} 
+
+.card.destaque { 
+    width: 330px; 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4), 0 0 0 4px #4da6ff; 
+} 
+
+.card.destaque:hover { 
+    transform: translateY(-15px); 
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.5), 0 0 0 6px #4da6ff; 
+} 
+
+.imagem-wrapper { 
+    width: 100%; 
+    height: 150px; 
+    overflow: hidden; 
+} 
+
+.imagem-wrapper img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    transition: transform 0.3s ease; 
+} 
+
+.card:hover .imagem-wrapper img { 
+    transform: scale(1.1); 
+} 
+
+.card-body { 
+    padding: 20px; 
+} 
+
+.card-body h3 { 
+    margin: 0 0 10px 0; 
+    color: #4da6ff; 
+} 
+
+.fixed-btn { 
+    position: fixed; 
+    bottom: 20px; 
+    right: 20px; 
+    background-color: #4da6ff; 
+    color: white; 
+    border: none; 
+    width: 50px; 
+    height: 50px; 
+    border-radius: 50%; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+    cursor: pointer; 
+    font-size: 20px; 
+    z-index: 100; 
+    transition: opacity 0.3s ease, visibility 0.3s ease; 
+} 
+
+.fixed-btn.hidden { 
+    opacity: 0; 
+    visibility: hidden; 
+} 
+
+.modal { 
+    display: none; 
+    position: fixed; 
+    z-index: 10; 
+    left: 0; 
+    top: 0; 
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0, 0, 0, 0.8); 
+    backdrop-filter: blur(5px); 
+} 
+
+.modal-content { 
+    background-color: #1a1a2e; 
+    color: white; 
+    margin: 10% auto; 
+    padding: 20px; 
+    border: 1px solid #888; 
+    width: 80%; 
+    border-radius: 10px; 
+    position: relative; 
+    max-width: 700px; 
+} 
+
+.modal-content img { 
+    width: 100%; 
+    height: auto; 
+    margin-top: 15px; 
+    border-radius: 5px; 
+} 
+
+.modal-content h2 { 
+    text-align: left; 
+    color: #4da6ff; 
+} 
+
+.close-btn { 
+    color: #aaa; 
+    float: right; 
+    font-size: 28px; 
+    font-weight: bold; 
+    cursor: pointer; 
+} 
+
+.close-btn:hover, 
+.close-btn:focus { 
+    color: white; 
+    text-decoration: none; 
+    cursor: pointer; 
+} 
+
+.contato-section { 
+    padding: 60px 20px; 
+    background-color: transparent; 
+    color: #f0f0f0; 
+    text-align: center; 
+} 
+
+.contato-form { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 15px; 
+    max-width: 600px; 
+    margin: 0 auto; 
+    text-align: left; 
+} 
+
+.contato-form label { 
+    font-weight: bold; 
+} 
+
+.contato-form input, 
+.contato-form textarea { 
+    padding: 12px; 
+    border: 1px solid #888; 
+    border-radius: 8px; 
+    background-color: #1a1a2e; 
+    color: #f0f0f0; 
+    font-size: 16px; 
+    transition: all 0.3s ease; 
+} 
+
+.contato-form input:focus, 
+.contato-form textarea:focus { 
+    outline: none; 
+    border-color: #4da6ff; 
+    box-shadow: 0 0 8px rgba(77, 166, 255, 0.6); 
+} 
+
+.contato-form button { 
+    padding: 15px; 
+    background-color: #4da6ff; 
+    color: white; 
+    border: none; 
+    border-radius: 8px; 
+    font-size: 18px; 
+    font-weight: bold; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease, transform 0.2s ease; 
+} 
+
+.contato-form button:hover { 
+    background-color: #004d99; 
+    transform: translateY(-2px); 
+} 
+
+@keyframes slide-in-fade { 
+    from { 
+        opacity: 0; 
+        transform: translateY(30px) scale(0.95); 
+        filter: blur(5px); 
+    } 
+    to { 
+        opacity: 1; 
+        transform: translateY(0) scale(1); 
+        filter: blur(0); 
+    } 
+} 
+
+.galeria-card.hidden { 
+    opacity: 0; 
+    transform: translateY(30px) scale(0.95); 
+    filter: blur(5px); 
+    transition: none; 
+} 
+
+.galeria-card.visible { 
+    animation: slide-in-fade 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; 
+} 
+
+footer { 
+    text-align: center; 
+    padding: 20px; 
+    background-color: #1a1a2e; 
+    border-top: 1px solid #333; 
+    color: #f0f0f0;
+} 
+
+.social-icons a { 
+    color: #f0f0f0; 
+    margin: 0 10px; 
+    font-size: 24px; 
+    transition: color 0.3s ease; 
+} 
+
+.social-icons a:hover { 
+    color: #4da6ff; 
+} 
+
+.performance-section { 
+    padding: 50px 20px; 
+    text-align: center; 
+} 
+
+.performance-grid { 
+    display: flex; 
+    justify-content: center; 
+    gap: 40px; 
+    flex-wrap: wrap; 
+} 
+
+.performance-item { 
+    background-color: #1a1a2e; 
+    padding: 30px; 
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    flex: 1; 
+    max-width: 300px; 
+    min-width: 200px; 
+} 
+
+.performance-item i { 
+    font-size: 40px; 
+    color: #4da6ff; 
+    margin-bottom: 15px; 
+} 
+
+.performance-item h3 { 
+    margin: 0; 
+    font-size: 2.2em; 
+    color: #f0f0f0; 
+} 
+
+.performance-item p { 
+    margin: 5px 0 0; 
+    font-size: 1em; 
+} 
+
+.specs-section { 
+    padding: 60px 20px; 
+    text-align: center; 
+} 
+
+.specs-table-container { 
+    max-width: 800px; 
+    margin: 20px auto; 
+    background-color: #1a1a2e; 
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    overflow: hidden; 
+} 
+
+.specs-table { 
+    width: 100%; 
+    border-collapse: collapse; 
+} 
+
+.specs-table th, .specs-table td { 
+    padding: 15px; 
+    text-align: left; 
+    border-bottom: 1px solid #333; 
+} 
+
+.specs-table thead th { 
+    background-color: #4da6ff; 
+    color: white; 
+    font-size: 1.2em; 
+} 
+
+.specs-table tbody tr:nth-child(odd) { 
+    background-color: #1a1a2e; 
+} 
+
+.specs-table tbody tr:nth-child(even) { 
+    background-color: #16162a; 
+} 
+
+.specs-table tbody tr:hover { 
+    background-color: #2b2b4e; 
+    transition: background-color 0.3s ease; 
+} 
+
+.specs-table td:first-child { 
+    font-weight: bold; 
+    color: #f0f0f0; 
+} 
+
+.optional-packages-section { 
+    padding: 60px 20px; 
+    text-align: center; 
+} 
+
+.packages-grid { 
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    gap: 30px; 
+    margin-top: 20px; 
+} 
+
+.package-card { 
+    background-color: #1a1a2e; 
+    padding: 25px; 
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    flex: 1; 
+    max-width: 350px; 
+    transition: transform 0.3s ease; 
+} 
+
+.package-card:hover { 
+    transform: translateY(-5px); 
+} 
+
+.package-card h3 { 
+    color: #4da6ff; 
+    margin-top: 0; 
+    font-size: 1.5em; 
+} 
+
+.package-card p { 
+    color: #f0f0f0; 
+    line-height: 1.6; 
+} 
+
+.curiosities-section { 
+    padding: 60px 20px; 
+    text-align: center; 
+    background-color: transparent; 
+} 
+
+.curiosities-section ul { 
+    list-style: none; 
+    padding: 0; 
+    max-width: 800px; 
+    margin: 20px auto; 
+} 
+
+.curiosities-section li { 
+    background-color: #1a1a2e; 
+    padding: 15px 20px; 
+    margin-bottom: 15px; 
+    border-radius: 8px; 
+    font-style: italic; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+} 
+
+.comparisons-section { 
+    padding: 60px 20px; 
+    text-align: center; 
+} 
+
+.comparison-grid { 
+    display: flex; 
+    justify-content: center; 
+    gap: 30px; 
+    flex-wrap: wrap; 
+} 
+
+.comparison-card { 
+    background-color: #1a1a2e; 
+    padding: 20px; 
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    flex: 1; 
+    max-width: 350px; 
+    min-width: 280px; 
+    text-align: left; 
+    transition: transform 0.3s ease; 
+} 
+
+.comparison-card:hover { 
+    transform: translateY(-5px); 
+} 
+
+.comparison-card img { 
+    width: 100%; 
+    height: auto; 
+    border-radius: 8px; 
+    margin-bottom: 15px; 
+} 
+
+.comparison-card h3 { 
+    margin: 0 0 10px 0; 
+    color: #4da6ff; 
+    font-size: 1.8em; 
+} 
+
+.comparison-card ul { 
+    list-style: none; 
+    padding: 0; 
+    margin: 0; 
+} 
+
+.comparison-card li { 
+    padding: 8px 0; 
+    border-bottom: 1px solid #333; 
+} 
+
+.comparison-card li:last-child { 
+    border-bottom: none; 
+} 
+
+.video-section { 
+    padding: 60px 20px; 
+    text-align: center; 
+} 
+
+.video-container { 
+    max-width: 800px; 
+    margin: 0 auto; 
+    background-color: black; 
+    padding: 10px; 
+} 
+
+.video-container iframe { 
+    width: 100%; 
+    height: 450px; 
+    display: block; 
+} 
+
+.typed-text-container { 
+    white-space: nowrap; 
+} 
+
+#typed-text + .blinking-cursor { 
+    font-weight: 100; 
+    font-size: 1em; 
+    color: #4da6ff; 
+    animation: blink 1s step-end infinite; 
+} 
+
+@keyframes blink { 
+    from, to { 
+        opacity: 1; 
+    } 
+    50% { 
+        opacity: 0; 
+    } 
+} 
+
+@media (max-width: 768px) { 
+    body { 
+        padding: 10px; 
+    } 
+    
+    header h1 { 
+        font-size: 2.5em; 
+    } 
+
+    header nav a { 
+        display: block; 
+        margin: 10px 0; 
+    } 
+
+    .card-container { 
+        flex-direction: column; 
+        align-items: center; 
+    } 
+
+    .card { 
+        width: 100%; 
+        max-width: 400px; 
+    } 
+    
+    .card.destaque { 
+        width: 100%; 
+    } 
+    
+    .contato-form { 
+        max-width: 100%; 
+    } 
+    
+    .modal-content { 
+        width: 95%; 
+        margin: 5% auto; 
+    } 
+    
+    .performance-grid { 
+        flex-direction: column; 
+        align-items: center; 
+        gap: 20px; 
+    } 
+
+    .comparison-grid { 
+        flex-direction: column; 
+        align-items: center; 
+        gap: 20px; 
+    } 
+    
+    .video-container iframe { 
+        height: 250px; 
+    } 
+}
+
+/* Novas classes para a animação de rolagem */
+.section-hidden {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1.2s ease, transform 1.2s ease;
+}
+
+.section-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Estilos para a mensagem de sucesso */
+.mensagem-sucesso {
+    background-color: #28a745;
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.mensagem-sucesso.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.mensagem-sucesso .fas {
+    font-size: 20px;
+}
