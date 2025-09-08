@@ -710,3 +710,7 @@ footer {
     background-color: #004d99;
     transform: translateY(-2px);
 }
+:focus {
+    outline: none;
+    -webkit-tap-highlight-color: transparent; /* Remove o destaque de clique em alguns navegadores */
+}
