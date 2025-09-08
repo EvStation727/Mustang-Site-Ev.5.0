@@ -691,3 +691,22 @@ footer {
         overflow: hidden;
     }
 }
+/* Estilo para o novo botão de "Ver Mais" */
+.card-button {
+    background-color: #4da6ff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+.card-button:hover {
+    background-color: #004d99;
+    transform: translateY(-2px);
+}
