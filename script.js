@@ -54,6 +54,14 @@ document.addEventListener('DOMContentLoaded', function() {
             const modal = document.getElementById(modalId);
             if (modal) {
                 modal.style.display = 'block';
+                
+                // Adiciona um pequeno atraso para a animação
+                setTimeout(() => {
+                    const modalContent = modal.querySelector('.modal-content');
+                    if (modalContent) {
+                        modalContent.classList.add('expand');
+                    }
+                }, 10);
             }
         });
     });
@@ -153,4 +161,15 @@ document.addEventListener('DOMContentLoaded', function() {
             alert('Por favor, preencha todos os campos do formulário.');
         }
     });
+}); 
+// Funcionalidade de Rolagem Suave
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
 });
+
