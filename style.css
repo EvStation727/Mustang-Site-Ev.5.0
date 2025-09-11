@@ -111,6 +111,11 @@ main {
 .card:hover {
     transform: translateY(-10px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    /* Efeito para quando o card é clicado/ativo */
+.card:active {
+    transform: translateY(-5px) scale(0.98); /* Afunda levemente e encolhe um pouco */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); /* Sombra um pouco mais forte */
+}
 }
 
 .card.destaque {
@@ -710,7 +715,16 @@ footer {
     background-color: #004d99;
     transform: translateY(-2px);
 }
-:focus {
-    outline: none;
-    -webkit-tap-highlight-color: transparent; /* Remove o destaque de clique em alguns navegadores */
+@keyframes expand-modal {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+.modal-content.expand {
+    animation: expand-modal 0.3s ease-in-out forwards;
 }
